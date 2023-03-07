@@ -16,7 +16,7 @@ export default function Cart() {
         setShowProducts(false);
       } else {
         setCartId(localCart);
-        const response = await fetch('/.netlify/functions/get-cart', {
+        const response = await fetch('/.netlify/functions/getCart', {
           method: 'post',
           body: JSON.stringify({
             cartId: localCart,
