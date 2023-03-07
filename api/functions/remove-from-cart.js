@@ -17,15 +17,15 @@
  * ```
  */
 
-const { removeItemFromCart } = require("./utils/removeItemFromCart");
+const { removeItemFromCart } = require('./removeItemFromCart');
 
 exports.handler = async (event) => {
   const { cartId, lineId } = JSON.parse(event.body);
 
   try {
-    console.log("--------------------------------");
-    console.log("Removing item from cart...");
-    console.log("--------------------------------");
+    console.log('--------------------------------');
+    console.log('Removing item from cart...');
+    console.log('--------------------------------');
     const shopifyResponse = await removeItemFromCart({
       cartId,
       lineId,

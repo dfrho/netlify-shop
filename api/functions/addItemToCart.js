@@ -1,4 +1,4 @@
-const { postToShopify } = require('./postToShopify')
+const { postToShopify } = require('./postToShopify');
 
 exports.addItemToCart = async ({ cartId, itemId, quantity }) => {
   try {
@@ -61,10 +61,10 @@ exports.addItemToCart = async ({ cartId, itemId, quantity }) => {
           },
         ],
       },
-    })
+    });
 
-    return shopifyResponse
+    return shopifyResponse;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};

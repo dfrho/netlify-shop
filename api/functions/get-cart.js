@@ -17,15 +17,15 @@
  * TODO: Add enhancement for pagination
  */
 
-const { postToShopify } = require("./utils/postToShopify");
+const { postToShopify } = require('./postToShopify');
 
 exports.handler = async (event) => {
   const { cartId } = JSON.parse(event.body);
 
   try {
-    console.log("--------------------------------");
-    console.log("Retrieving existing cart...");
-    console.log("--------------------------------");
+    console.log('--------------------------------');
+    console.log('Retrieving existing cart...');
+    console.log('--------------------------------');
     const shopifyResponse = await postToShopify({
       query: `
          query getCart($cartId: ID!) {
