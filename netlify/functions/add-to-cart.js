@@ -7,7 +7,7 @@
  * @param {number} quantity - Minimum 1
  *
  * @returns {object} cart that contains lines of items inside
- * See './createCartWithItem' for the data structure
+ * See './createCartWithItem' for data structure
  *
  * Examples:
  *
