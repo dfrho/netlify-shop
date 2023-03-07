@@ -1,7 +1,7 @@
 import ProductListing from '@components/ProductListing';
 import Link from 'next/link';
 import Footer from '@components/Footer';
-import { getProductList } from 'api/functions/getProductList';
+import { getProductList } from '@api/getProductList';
 
 export default function AllProductsPage({ products }) {
   return (
