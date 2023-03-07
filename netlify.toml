@@ -1,12 +1,5 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
-[[plugins]]
-  package = "@algolia/netlify-plugin-crawler"
-    [plugins.inputs]
-    branches = ['master', 'develop', 'algoliatwo', 'feat/add-algolia', 'functions']
-    disabled = false
-    renderJavaScript = true
-
 
 [functions]
   directory = "api/functions/"
