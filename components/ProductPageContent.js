@@ -62,7 +62,7 @@ export default function ProductPageContent({ product }) {
       .amount;
 
     setCost(formatPrice(variantPrice * quantity));
-  }, [chosenVariant, quantity, cost]);
+  }, [chosenVariant, quantity, cost, vars]);
 
   let image = product.images.edges[0].node;
 
