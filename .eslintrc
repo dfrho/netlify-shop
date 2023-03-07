@@ -1,7 +1,0 @@
-{
-    "extends": ["next", "plugin:react/recommended", "plugin:react/jsx-runtime"],
-    "rules": {
-        "react/prop-types": 0
-      }
-  }
-  
