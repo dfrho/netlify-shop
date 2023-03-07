@@ -24,7 +24,7 @@ exports.handler = async (event) => {
 
   try {
     console.log('--------------------------------');
-    console.log('Removing item from cart...');
+    console.log('Removing item ok from cart...');
     console.log('--------------------------------');
     const shopifyResponse = await removeItemFromCart({
       cartId,
