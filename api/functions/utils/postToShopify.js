@@ -11,6 +11,10 @@ exports.postToShopify = async ({ query, variables }) => {
       },
       body: JSON.stringify({ query, variables }),
     }).then((res) => res.json());
+    console.log(
+      '🚀 ~ file: postToShopify.js:14 ~ exports.postToShopify= ~ result:',
+      result
+    );
 
     if (result.errors) {
       console.log({ errors: result.errors });

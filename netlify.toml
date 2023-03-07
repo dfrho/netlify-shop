@@ -9,4 +9,4 @@
 
 
 [functions]
-  directory = "api/functions/"
+  directory = "api/functions/*"
