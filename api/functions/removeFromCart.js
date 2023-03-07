@@ -17,9 +17,9 @@
  * ```
  */
 
-const { removeItemFromCart } = require('./utils/removeItemFromCart');
+const { removeItemFromCart } = require('./removeItemFromCart');
 
-exports.handler = async (event) => {
+exports.removeFromCart = async (event) => {
   const { cartId, lineId } = JSON.parse(event.body);
 
   try {

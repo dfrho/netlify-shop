@@ -3,10 +3,7 @@
 [[plugins]]
   package = "@algolia/netlify-plugin-crawler"
     [plugins.inputs]
-    branches = ['master', 'develop', 'algoliatwo', 'feat/add-algolia', 'newalgolia']
+    branches = ['master', 'develop', 'algoliatwo', 'newalgolia']
     disabled = false
     renderJavaScript = true
 
-
-[functions]
-  directory = "api/functions/*"

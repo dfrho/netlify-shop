@@ -7,7 +7,7 @@
  * @param {number} quantity - Minimum 1
  *
  * @returns {object} cart that contains lines of items inside
- * See './utils/createCartWithItem' for the data structure
+ * See './createCartWithItem' for the data structure
  *
  * Examples:
  *
@@ -36,16 +36,16 @@
  * ```
  */
 
-const { createCartWithItem } = require("./utils/createCartWithItem");
-const { addItemToCart } = require("./utils/addItemToCart");
+const { createCartWithItem } = require('./createCartWithItem');
+const { addItemToCart } = require('./addItemToCart');
 
-exports.handler = async (event) => {
+exports.addToCart = async (event) => {
   const { cartId, itemId, quantity } = JSON.parse(event.body);
 
   if (cartId) {
-    console.log("--------------------------------");
-    console.log("Adding item to existing cart...");
-    console.log("--------------------------------");
+    console.log('--------------------------------');
+    console.log('Adding item to existing cart...');
+    console.log('--------------------------------');
 
     const shopifyResponse = await addItemToCart({
       cartId,
@@ -58,9 +58,9 @@ exports.handler = async (event) => {
       body: JSON.stringify(shopifyResponse.cartLinesAdd.cart),
     };
   } else {
-    console.log("--------------------------------");
-    console.log("Creating new cart with item...");
-    console.log("--------------------------------");
+    console.log('--------------------------------');
+    console.log('Creating new cart with item...');
+    console.log('--------------------------------');
     const createCartResponse = await createCartWithItem({
       itemId,
       quantity,

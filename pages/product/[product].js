@@ -2,7 +2,7 @@ import Head from 'next/head';
 import ProductPageContent from '@components/ProductPageContent';
 import Header from '@components/Header';
 import Footer from '@components/Footer';
-import { getProductList } from '@api/getProductList';
+import { getProductList } from 'api/functions/getProductList';
 
 export default function ProductPage({ product }) {
   return (
