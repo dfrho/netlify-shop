@@ -10,25 +10,18 @@ import { InstantSearch, SearchBox, Hits } from 'react-instantsearch-hooks-web';
 function Hit({ hit }) {
   return <HitListing hit={hit} />;
 }
+
 function Home({ products }) {
   const [searchState, setSearchState] = useState({});
 
   const handleSearchStateChange = (newSearchState) => {
     setSearchState(newSearchState);
   };
-  console.log(
-    'process.env.ALGOLIA_SEARCH_INDEX',
-    process.env.ALGOLIA_SEARCH_INDEX
-  );
- 
-  console.log('process.env.ALGOLIA_APP_ID:  ', process.env.ALGOLIA_APP_ID)
-  console.log('process.env.ALGOLIA_SEARCH_API_KEY:  ',process.env.ALGOLIA_SEARCH_API_KEY)
 
-;
   return (
     <>
       <Head>
-        <title>LifeFitness Shop</title>
+        <title>Life Fitness Shop</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -49,19 +42,6 @@ function Home({ products }) {
     </>
   );
 }
-  console.log("🚀 ~ file: index.js:49 ~ Home ~ process.env.ALGOLIA_APP_ID;:", process.env.ALGOLIA_APP_ID;)
-console.log(
-  '🚀 ~ file: index.js:49 ~ Home ~ process.env.ALGOLIA_APP_ID:',
-  process.env.ALGOLIA_APP_ID
-);
-console.log(
-  '🚀 ~ file: index.js:49 ~ Home ~ process.env.ALGOLIA_APP_ID:',
-  process.env.ALGOLIA_APP_ID
-);
-console.log(
-  '🚀 ~ file: index.js:49 ~ Home ~ process.env.ALGOLIA_APP_ID:',
-  process.env.ALGOLIA_APP_ID
-);
 
 export async function getStaticProps() {
   const products = await getProductList();
