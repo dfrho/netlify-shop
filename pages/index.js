@@ -10,14 +10,16 @@ import { InstantSearch, SearchBox, Hits } from 'react-instantsearch-hooks-web';
 function Hit({ hit }) {
   return <HitListing hit={hit} />;
 }
-
 function Home({ products }) {
   const [searchState, setSearchState] = useState({});
 
   const handleSearchStateChange = (newSearchState) => {
     setSearchState(newSearchState);
   };
-
+  console.log(
+    'process.env.ALGOLIA_SEARCH_INDEX',
+    process.env.ALGOLIA_SEARCH_INDEX
+  );
   return (
     <>
       <Head>
