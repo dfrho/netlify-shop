@@ -1,4 +1,4 @@
-const { postToShopify } = require('./postToShopify')
+const { postToShopify } = require('./postToShopify');
 
 /**
  * @param {string} cartId - Target cart to update
@@ -60,10 +60,10 @@ exports.removeItemFromCart = async ({ cartId, lineId }) => {
         cartId,
         lineIds: [lineId],
       },
-    })
+    });
 
-    return shopifyResponse
+    return shopifyResponse;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};

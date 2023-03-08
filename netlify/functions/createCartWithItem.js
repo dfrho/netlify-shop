@@ -1,4 +1,4 @@
-const { postToShopify } = require('./postToShopify')
+const { postToShopify } = require('./postToShopify');
 
 // Creates a cart with a single item
 exports.createCartWithItem = async ({ itemId, quantity }) => {
@@ -65,10 +65,10 @@ exports.createCartWithItem = async ({ itemId, quantity }) => {
           ],
         },
       },
-    })
+    });
 
-    return response
+    return response;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};

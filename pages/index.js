@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import { useState } from 'react';
-// import ProductListing from '@components/ProductListing';
 import HitListing from '../components/HitListing';
 import Header from '@components/Header';
 import Footer from '@components/Footer';

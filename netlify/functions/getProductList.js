@@ -1,4 +1,4 @@
-const { postToShopify } = require("./postToShopify");
+const { postToShopify } = require('./postToShopify');
 
 exports.getProductList = async () => {
   try {
