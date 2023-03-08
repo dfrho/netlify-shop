@@ -1,6 +1,6 @@
 const { postToShopify } = require('./postToShopify');
 
-exports.addToCart = async ({ cartId, itemId, quantity }) => {
+exports.handler = async ({ cartId, itemId, quantity }) => {
   try {
     const shopifyResponse = postToShopify({
       query: `
