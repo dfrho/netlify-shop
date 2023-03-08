@@ -1,74 +1,70 @@
-/**
- * Add to Cart API Endpoint
- *
- * * Purpose: Add a single item to the cart
- * @param {string} cartId (Optional)
- * @param {string} itemId - Usually it's the product variant id
- * @param {number} quantity - Minimum 1
- *
- * @returns {object} cart that contains lines of items inside
- * See './createCartWithItem' for the data structure
- *
- * Examples:
- *
- * If a cart does not exist yet,
- * ```
- * fetch('/.netlify/functions/add-to-cart', {
- *   method: 'POST',
- *   body: JSON.stringify({
- *     cardId: '', // cardId can also be omitted if desired
- *     itemId: 'Z2lkOi8vc2hvcGlmFyaWFudC8zOTc0NDEyMDEyNzY5NA==',
- *     quantity: 4
- *   })
- * })
- * ```
- *
- * Add item to an existing cart
- * ```
- * fetch('/.netlify/functions/add-to-cart', {
- *   method: 'POST',
- *   body: JSON.stringify({
- *     cartId: 'S9Qcm9kdWN0VmFyaWFudC8zOTc0NDEyMDEyNzY5NA',
- *     itemId: 'Z2lkOi8vc2hvcGlmFyaWFudC8zOTc0NDEyMDEyNzY5NA==',
- *     quantity: 4
- *   })
- * })
- * ```
- */
+const { postToShopify } = require('./postToShopify');
 
-const { createCartWithItem } = require('./createCartWithItem');
-const { addItemToCart } = require('./addItemToCart');
-
-exports.addToCart = async (event) => {
-  const { cartId, itemId, quantity } = JSON.parse(event.body);
-
-  if (cartId) {
-    console.log('--------------------------------');
-    console.log('Adding item to existing cart...');
-    console.log('--------------------------------');
-
-    const shopifyResponse = await addItemToCart({
-      cartId,
-      itemId,
-      quantity,
+exports.addToCart = async ({ cartId, itemId, quantity }) => {
+  try {
+    const shopifyResponse = postToShopify({
+      query: `
+        mutation addItemToCart($cartId: ID!, $lines: [CartLineInput!]!) {
+          cartLinesAdd(cartId: $cartId, lines: $lines) {
+            cart {
+              id
+              lines(first: 10) {
+                edges {
+                  node {
+                    id
+                    quantity
+                    merchandise {
+                      ... on ProductVariant {
+                        id
+                        title
+                        priceV2 {
+                          amount
+                          currencyCode
+                        }
+                        product {
+                          title
+                          handle
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+              estimatedCost {
+                totalAmount {
+                  amount
+                  currencyCode
+                }
+                subtotalAmount {
+                  amount
+                  currencyCode
+                }
+                totalTaxAmount {
+                  amount
+                  currencyCode
+                }
+                totalDutyAmount {
+                  amount
+                  currencyCode
+                }
+              }
+            }
+          }
+        }
+      `,
+      variables: {
+        cartId,
+        lines: [
+          {
+            merchandiseId: itemId,
+            quantity,
+          },
+        ],
+      },
     });
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify(shopifyResponse.cartLinesAdd.cart),
-    };
-  } else {
-    console.log('--------------------------------');
-    console.log('Creating new cart with item...');
-    console.log('--------------------------------');
-    const createCartResponse = await createCartWithItem({
-      itemId,
-      quantity,
-    });
-
-    return {
-      statusCode: 200,
-      body: JSON.stringify(createCartResponse.cartCreate.cart),
-    };
+    return shopifyResponse;
+  } catch (error) {
+    console.log(error);
   }
 };

@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/chrishannaby/shopify-next-netlify#readme",
   "dependencies": {
+    "apollo-server-lambda": "^2.26.1",
+    "graphql": "^14.7.0",
     "node-fetch": "^2.6.7"
   }
 }
